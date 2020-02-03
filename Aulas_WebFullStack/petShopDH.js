@@ -140,7 +140,7 @@ const campanhaVacina = pets => {
     for(let i = 0; i < pets.length; i++){
         (!pets[i].vacinado) ? (naoVacinados++, vacinarPet(pets[i])):"";
     };
-    console.log(naoVacinados + ' pets foram vaciados nessa campanha!');
+    console.log(naoVacinados + ' ggg pets foram vaciados nessa campanha!');
 }
 
 contarVacinados(pets);
