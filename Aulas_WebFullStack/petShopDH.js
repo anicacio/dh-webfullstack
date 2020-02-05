@@ -39,15 +39,6 @@ let pets = [{
 
 const anoDeNascimento = pet => 2020 - pet.idade;
 
-const vacinarPet = pet => {
-    if(pet.vacinado){
-        console.log(`${pet.nome} já está vacinado!`);
-    }else{
-        pet.vacinado = true;
-        console.log(`${pet.nome} vacinado com sucesso!`);
-    }
-}
-
 const listarPets = () => {
     for(let pet of pets){
         console.log(`
@@ -111,7 +102,7 @@ let spot = {
     vacinado: true
 };
 
-const atenderPet = (pet,servicos) => {
+const atenderPet = (pet,...servicos) => {
     console.log(`Bem vindo, ${pet.nome}!`);
     for(let servico of servicos){
         servico(pet);
@@ -123,25 +114,31 @@ const atenderPet = (pet,servicos) => {
     console.log('Volte sempre!');
 };
 
-
-let adicionarServicos = [tosarPet,darBanhoPet,cortarUnhasPet];
-
-atenderPet(spot, adicionarServicos);
+const vacinarPet = pet => {
+    if(pet.vacinado){
+        console.log(`${pet.nome} já está vacinado!`);
+    }else{
+        pet.vacinado = true;
+        console.log(`${pet.nome} vacinado com sucesso!`);
+    };
+};
 
 const contarVacinados = pets => {
     let vacinados = 0;
     let naoVacinados = 0;
-    for(let i = 0; i < pets.length; i++){
-        (!pets[i].vacinado) ? naoVacinados++ : vacinados++;
+    for(let pet in pets){
+        (!pet.vacinado) ? naoVacinados++ : vacinados++;
     };
-    console.log('Foram encontrados ' + naoVacinados + ' pets não vacinados');
-    console.log('Foram encontrados ' + vacinados + ' pets vacinados');
+    console.log(`Foram encontrados ${naoVacinados} pets não vacinados`);
+    console.log(`Foram encontrados ${vacinados} pets vacinados`);
 };
 
 const campanhaVacina = pets => {
     let naoVacinados = 0;
-    for(let i = 0; i < pets.length; i++){
-        (!pets[i].vacinado) ? (naoVacinados++, vacinarPet(pets[i])):"";
+    for(let pet of pets){
+        (!pet.vacinado) ? (naoVacinados++, vacinarPet(pet)):"";
     };
-    console.log(naoVacinados + ' pets foram vaciados nessa campanha!');
+    console.log(`${naoVacinados} pets foram vaciados nessa campanha!`);
 };
+
+campanhaVacina(pets);
