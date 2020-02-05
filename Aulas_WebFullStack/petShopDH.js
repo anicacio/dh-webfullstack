@@ -137,9 +137,16 @@ const campanhaVacina = pets => {
     console.log(`${naoVacinados} pets foram vacinados nessa campanha!`);
 };
 
+
+const buscarPetPorNome = nome => {
+    let resultadoBuscaPorNome = pets.filter(pet => (pet.nome = nome));
+    console.log(resultadoBuscaPorNome);
+}
+
 // campanhaVacina(pets);
 // atenderPet(spot, darBanhoPet, tosarPet, cortarUnhasPet);
 // listarPets();
 // contarVacinados(pets);
-adicionarPet(spot);
+// adicionarPet(spot);
 // console.log(validarDados(spot));
+buscarPetPorNome("Tripé");
