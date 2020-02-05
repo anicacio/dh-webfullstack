@@ -54,13 +54,11 @@ const listarPets = () => {
 };
 
 const adicionarPet = pet => {
-    if(typeof novoPet == "object" && validarDados(novoPet)){
-        novoPet.nome = novoPet.nome.toString();
-        novoPet.idade = parseInt(novoPet.idade);
-        if(!novoPet.servicos){
-            novoPet.servicos = [];
-        }
-        pets.push(novoPet);
+    if(typeof pet == "object" && validarDados(pet)){
+        pet.nome = pet.nome.toString();
+        pet.idade = parseInt(pet.idade);
+        (!pet.servicos) ? pet.servicos = [] : "";
+        pets.push(pet);
         console.log(`${pets[pets.length - 1].nome} adicionado na lista!!`)        
     }else{
         console.log("Ops, insira um objeto válido!")
@@ -69,11 +67,11 @@ const adicionarPet = pet => {
 
 const validarDados = pet => {
     return (
-        pet.nome &&
-        pet.idade &&
-        pet.genero &&
-        pet.tipo &&
-        pet.raca
+        pet.nome != "" &&
+        pet.idade != "" &&
+        pet.genero != "" &&
+        pet.tipo != "" &&
+        pet.raca != "" 
     )
 };
 
@@ -142,4 +140,6 @@ const campanhaVacina = pets => {
 // campanhaVacina(pets);
 // atenderPet(spot, darBanhoPet, tosarPet, cortarUnhasPet);
 // listarPets();
-contarVacinados(pets);
+// contarVacinados(pets);
+adicionarPet(spot);
+// console.log(validarDados(spot));
