@@ -1,7 +1,7 @@
 // Projeto PetShop
 const PETSHOP = "Petshop DH";
 
-console.log(`** ${PETSHOP} **`);
+console.log(`   ** ${PETSHOP} **    `);
 
 let pets = [{
     nome: "Fred",
@@ -124,13 +124,11 @@ const vacinarPet = pet => {
 };
 
 const contarVacinados = pets => {
-    let vacinados = 0;
-    let naoVacinados = 0;
-    for(let pet in pets){
-        (!pet.vacinado) ? naoVacinados++ : vacinados++;
-    };
-    console.log(`Foram encontrados ${naoVacinados} pets não vacinados`);
-    console.log(`Foram encontrados ${vacinados} pets vacinados`);
+    let vacinados = pets.filter(pet => pet.vacinado).length;
+    let naoVacinados = pets.filter(pet => !pet.vacinado).length;
+    console.log(`
+    Foram encontrados ${naoVacinados} pets não vacinados
+    Foram encontrados ${vacinados} pets vacinados`);
 };
 
 const campanhaVacina = pets => {
@@ -138,7 +136,10 @@ const campanhaVacina = pets => {
     for(let pet of pets){
         (!pet.vacinado) ? (naoVacinados++, vacinarPet(pet)):"";
     };
-    console.log(`${naoVacinados} pets foram vaciados nessa campanha!`);
+    console.log(`${naoVacinados} pets foram vacinados nessa campanha!`);
 };
 
-campanhaVacina(pets);
+// campanhaVacina(pets);
+// atenderPet(spot, darBanhoPet, tosarPet, cortarUnhasPet);
+// listarPets();
+contarVacinados(pets);
