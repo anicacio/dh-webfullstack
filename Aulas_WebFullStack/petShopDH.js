@@ -1,6 +1,8 @@
 // Projeto PetShop
 const PETSHOP = "Petshop DH";
 
+console.log(`** ${PETSHOP} **`);
+
 let pets = [{
     nome: "Fred",
     raca: "vira-lata",
@@ -39,25 +41,24 @@ const anoDeNascimento = pet => 2020 - pet.idade;
 
 const vacinarPet = pet => {
     if(pet.vacinado){
-        console.log(pet.nome + " já está vacinado!!");
+        console.log(`${pet.nome} já está vacinado!`);
     }else{
         pet.vacinado = true;
-        console.log(pet.nome + " vacinado com sucesso!");
+        console.log(`${pet.nome} vacinado com sucesso!`);
     }
 }
 
 const listarPets = () => {
-    console.log("** " + PETSHOP + " **");
-    console.log("----------------------------------------");
-    for(let i = 0; i < pets.length; i++){
-        console.log("Nome: " + pets[i].nome);
-        console.log("Raça: " + pets[i].raca);
-        console.log("Idade: " + pets[i].idade);
-        console.log("Genero: " + (pets[i].genero == "F" ? "Femea" : "Macho"));
-        console.log("Serviços: " + pets[i].servicos);
-        console.log("Tipo: " + pets[i].tipo);
-        console.log("Vacinado: " + (pets[i].vacinado == true ? "Sim" : "Não"));
-        console.log("----------------------------------------");
+    for(let pet of pets){
+        console.log(`
+        Nome: ${pet.nome}
+        Raça: ${pet.raca}
+        Idade: ${pet.idade}
+        Genero: ${(pet.genero == "F" ? "Femea" : "Macho")}
+        Serviços: ${pet.servicos}
+        Tipo: ${pet.tipo}
+        Vacinado: ${(pet.vacinado == true ? "Sim" : "Não")}
+        ----------------------------------------`);
     }
 }
 
@@ -69,7 +70,7 @@ const adicionarPet = pet => {
             novoPet.servicos = [];
         }
         pets.push(novoPet);
-        console.log(pets[pets.length - 1].nome + " adicionado na lista!!")        
+        console.log(`${pets[pets.length - 1].nome} adicionado na lista!!`)        
     }else{
         console.log("Ops, insira um objeto válido!")
     };
@@ -143,5 +144,6 @@ const campanhaVacina = pets => {
     console.log(naoVacinados + ' pets foram vaciados nessa campanha!');
 }
 
-contarVacinados(pets);
-campanhaVacina(pets);
+
+
+listarPets();
