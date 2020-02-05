@@ -59,8 +59,8 @@ const listarPets = () => {
         Tipo: ${pet.tipo}
         Vacinado: ${(pet.vacinado == true ? "Sim" : "Não")}
         ----------------------------------------`);
-    }
-}
+    };
+};
 
 const adicionarPet = pet => {
     if(typeof novoPet == "object" && validarDados(novoPet)){
@@ -88,17 +88,17 @@ const validarDados = pet => {
 
 const tosarPet = pet => {
     pet.servicos.push('tosa');
-    console.log(pet.nome + ' está tosado!');
+    console.log(`${pet.nome} está tosado!`);
 };
 
 const darBanhoPet = pet => {
     pet.servicos.push('banho');
-    console.log(pet.nome + ' está de banho tomado!');
+    console.log(`${pet.nome} está de banho tomado!`);
 };
 
 const cortarUnhasPet = pet => {
     pet.servicos.push('corte de unha');
-    console.log(pet.nome + ' está com as unhas cortadas!');
+    console.log(`${pet.nome} está com as unhas cortadas!`);
 };
 
 let spot = {
@@ -112,19 +112,21 @@ let spot = {
 };
 
 const atenderPet = (pet,servicos) => {
-    console.log('Bem vindo, ' + pet.nome + '!');
-    for(let i = 0; i < servicos.length; i++){
-        servicos[i](pet);
+    console.log(`Bem vindo, ${pet.nome}!`);
+    for(let servico of servicos){
+        servico(pet);
     };
     const pagar = () => {
         console.log('Pagamento realizado com successo!');
     };
     pagar();
     console.log('Volte sempre!');
-}
+};
 
 
-// let adicionarServicos = [tosarPet,darBanhoPet,cortarUnhasPet];
+let adicionarServicos = [tosarPet,darBanhoPet,cortarUnhasPet];
+
+atenderPet(spot, adicionarServicos);
 
 const contarVacinados = pets => {
     let vacinados = 0;
@@ -134,7 +136,7 @@ const contarVacinados = pets => {
     };
     console.log('Foram encontrados ' + naoVacinados + ' pets não vacinados');
     console.log('Foram encontrados ' + vacinados + ' pets vacinados');
-}
+};
 
 const campanhaVacina = pets => {
     let naoVacinados = 0;
@@ -142,8 +144,4 @@ const campanhaVacina = pets => {
         (!pets[i].vacinado) ? (naoVacinados++, vacinarPet(pets[i])):"";
     };
     console.log(naoVacinados + ' pets foram vaciados nessa campanha!');
-}
-
-
-
-listarPets();
+};
