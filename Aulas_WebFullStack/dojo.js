@@ -31,7 +31,9 @@ let alunos = [{
 
 const listarAlunos = () => {
     alunos.forEach(aluno => {
-        console.log(alunos);
+        console.log(`
+        Nome: 
+        `);
     });
 };
 
@@ -65,7 +67,7 @@ const matricularAluno = (nomeAluno, novoCurso) => {
 };
 
 // console.log(alunos);
-// listarAlunos();
+listarAlunos();
 // calcularMedia();
 // adicionarNota();
 // buscarAlunoPorNome();
