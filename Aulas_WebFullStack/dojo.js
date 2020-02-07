@@ -30,7 +30,7 @@ let alunos = [
                 nomeCurso: "Full Stack",
                 notas: [7,7,6],
                 faltas: 5,
-                dataMatricula: 20200120
+                dataMatricula: 20200121
             }
         ]
     }
