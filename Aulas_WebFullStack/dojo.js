@@ -7,7 +7,8 @@ let alunos = [
             {
                 nomeCurso: "Full Stack",
                 notas: [8,9,7],
-                faltas: 0
+                faltas: 0,
+                dataMatricula: 20200120
             }
         ]
     },
@@ -17,7 +18,8 @@ let alunos = [
             {
                 nomeCurso: "Full Stack",
                 notas: [8,10,7],
-                faltas: 1
+                faltas: 1,
+                dataMatricula: 20200120
             }
         ]
     },
@@ -27,11 +29,18 @@ let alunos = [
             {
                 nomeCurso: "Full Stack",
                 notas: [7,7,6],
-                faltas: 5
+                faltas: 5,
+                dataMatricula: 20200120
             }
         ]
     }
 ];
+
+const listarAlunos = () => {
+    alunos.forEach(aluno => {
+        console.log();
+    });
+}
 
 const matricularAluno = (nomeAluno, novoCurso) => {
     let alunoExistente = alunos.filter(aluno => (aluno.nome == nomeAluno));
@@ -63,4 +72,9 @@ const matricularAluno = (nomeAluno, novoCurso) => {
 }
 
 // console.log(alunos);
-matricularAluno("Anderson Nicácio", "Full Stack");
+// listarAlunos();
+// calcularMedia();
+// adicionarNota();
+// buscarAlunoPorNome();
+// checarAprovado();
+// matricularAluno("Anderson Nicácio", "Full Stack");
