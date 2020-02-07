@@ -31,9 +31,9 @@ let alunos = [{
 
 const listarAlunos = () => {
     alunos.forEach(aluno => {
-        console.log();
+        console.log(alunos);
     });
-}
+};
 
 const matricularAluno = (nomeAluno, novoCurso) => {
     let alunoExistente = alunos.filter(aluno => (aluno.nome == nomeAluno));
@@ -52,17 +52,17 @@ const matricularAluno = (nomeAluno, novoCurso) => {
             nome: nomeAluno,
             boletim: []
         })
-    }
+    };
 
     const adicionarCurso = () => {
 
-    }
+    };
 
     if (!verificarJaMatriculado()) {
         adicionarAluno();
 
-    }
-}
+    };
+};
 
 // console.log(alunos);
 // listarAlunos();
