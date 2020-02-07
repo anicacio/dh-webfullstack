@@ -1,38 +1,31 @@
 const escola = "Digital House";
 
-let alunos = [
-    {
+let alunos = [{
         nome: "Anderson Nicácio",
-        boletim: [
-            {
-                nomeCurso: "Full Stack",
-                notas: [8,9,7],
-                faltas: 0,
-                dataMatricula: 20200122
-            }
-        ]
+        boletim: [{
+            nomeCurso: "Full Stack",
+            notas: [8, 9, 7],
+            faltas: 0,
+            dataMatricula: 20200122
+        }]
     },
     {
         nome: "Andressa Fazam",
-        boletim: [
-            {
-                nomeCurso: "Full Stack",
-                notas: [8,10,7],
-                faltas: 1,
-                dataMatricula: 20200120
-            }
-        ]
+        boletim: [{
+            nomeCurso: "Full Stack",
+            notas: [8, 10, 7],
+            faltas: 1,
+            dataMatricula: 20200120
+        }]
     },
     {
         nome: "Anderson Ricardo",
-        boletim: [
-            {
-                nomeCurso: "Full Stack",
-                notas: [7,7,6],
-                faltas: 5,
-                dataMatricula: 20200121
-            }
-        ]
+        boletim: [{
+            nomeCurso: "Full Stack",
+            notas: [7, 7, 6],
+            faltas: 5,
+            dataMatricula: 20200121
+        }]
     }
 ];
 
@@ -47,8 +40,8 @@ const matricularAluno = (nomeAluno, novoCurso) => {
     console.log(alunoExistente);
 
     const verificarJaMatriculado = () => {
-        for(aluno of alunoExistente){
-            for(curso of aluno.boletim){
+        for (aluno of alunoExistente) {
+            for (curso of aluno.boletim) {
                 return curso.nomeCurso == novoCurso;
             };
         };
@@ -62,10 +55,10 @@ const matricularAluno = (nomeAluno, novoCurso) => {
     }
 
     const adicionarCurso = () => {
-        
+
     }
 
-    if(!verificarJaMatriculado()){
+    if (!verificarJaMatriculado()) {
         adicionarAluno();
 
     }
