@@ -6,7 +6,7 @@ let alunos = [{
             nomeCurso: "Full Stack",
             notas: [8, 9, 7],
             faltas: 0,
-            dataMatricula: 20200122
+            dataMatricula: "2020-01-22"
         }]
     },
     {
@@ -15,7 +15,7 @@ let alunos = [{
             nomeCurso: "Full Stack",
             notas: [8, 10, 7],
             faltas: 1,
-            dataMatricula: 20200120
+            dataMatricula: "2020-01-20"
         }]
     },
     {
@@ -24,17 +24,35 @@ let alunos = [{
             nomeCurso: "Full Stack",
             notas: [7, 7, 6],
             faltas: 5,
-            dataMatricula: 20200121
+            dataMatricula: "2020-01-21"
         }]
     }
 ];
 
 const listarAlunos = () => {
-    alunos.forEach(aluno => {
-        console.log(`
-        Nome: 
-        `);
-    });
+    // alunos.forEach(aluno => {
+    //     console.log(`
+    //     Nome: ${aluno.nome}`);
+    //     aluno.boletim.forEach(boletim => {
+    //         console.log(`
+    //             Curso: ${boletim.nomeCurso}
+    //             Notas: ${boletim.notas}
+    //             Faltas: ${boletim.faltas}
+    //             Data da Matricula: ${boletim.dataMatricula}
+    //         `)
+    //     })
+    // });
+    for (aluno of alunos) {
+        console.log(`Nome: ${aluno.nome}`);
+        for (boletim of aluno.boletim) {
+            console.log(`
+            Curso: ${boletim.nomeCurso}
+            Notas: ${boletim.notas}
+            Faltas: ${boletim.faltas}
+            Data da Matricula: ${boletim.dataMatricula}
+           `)
+        }
+    }
 };
 
 const matricularAluno = (nomeAluno, novoCurso) => {
