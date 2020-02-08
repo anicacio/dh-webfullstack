@@ -111,10 +111,27 @@ const checarAprovado = (nomeAluno) => {
     };
 };
 
+const adicionarNota = (nomeAluno, nomeCurso, nota) => {
+    let alunoExistente = alunos.filter(aluno => (aluno.nome == nomeAluno));
+    if (alunoExistente.length != 0) {
+        let boletim = alunoExistente[0].boletim.filter(curso => (curso.nomeCurso == nomeCurso));
+        boletim[0].notas.push(nota);
+        console.log(`Aluno: ${alunoExistente[0].nome}
+        Curso: ${boletim[0].nomeCurso}
+        Notas: ${boletim[0].notas}
+        Nota(${nota}) adicionada com sucesso!`);
+    } else {
+        console.log("Aluno não encontrado!");
+    };
+};
 // listarAlunos();
 // matricularAluno("Daniele de Oliveira Lucas", "Full Stack", "Vila Olimpia"); // Novo Aluno
 // matricularAluno("Anderson Nicácio", "Full Stack", "Vila Olimpia"); // Aluno Existente
-// checarAprovado("Daniele de Oliveira Lucas"); // Novo Aluno
+// checarAprovado("Amanda Andrade"); // Novo Aluno
 // checarAprovado("Anderson Nicácio"); // Aluno Existente
-// adicionarNota();
+// console.log("--------------------------------------");
+// adicionarNota("Anderson Nicácio", "Full Stack", 9);
+// console.log("--------------------------------------");
+// checarAprovado("Anderson Nicácio"); 
+// adicionarNota("Michel Santana", "Full Stack", 9);
 // buscarAlunoPorNome();
