@@ -55,16 +55,18 @@ const listarAlunos = () => {
 };
 
 const matricularAluno = (nomeAluno, novoCurso, campus) => {
-    let alunoExistente = alunos.filter(aluno => (aluno.nome == nomeAluno));
+    let alunoExistente = buscarAluno(nomeAluno);
     const verificarMatriculado = () => {
-        if (alunoExistente.length != 0) {
-            let boletim = alunoExistente[0].boletim.filter(curso => (curso.nomeCurso == novoCurso));
+        if (alunoExistente) {
+            let boletim = alunoExistente.boletim.filter(curso => (curso.nomeCurso == novoCurso));
             return ((boletim.length == 0) ? false : true);
+        } else {
+            return false;
         }
     };
-    if (alunoExistente.length != 0) {
+    if (alunoExistente) {
         if (!verificarMatriculado()) {
-            alunoExistente[0].boletim.push({
+            alunoExistente.boletim.push({
                 nomeCurso: novoCurso,
                 campus: campus,
                 notas: [],
@@ -91,16 +93,16 @@ const matricularAluno = (nomeAluno, novoCurso, campus) => {
 };
 
 const checarAprovado = (nomeAluno) => {
-    let alunoExistente = alunos.filter(aluno => (aluno.nome == nomeAluno));
+    let alunoExistente = buscarAluno(nomeAluno);
     const calcularMedia = () => {
         let soma = curso.notas.reduce((pilha, nota) => {
             return pilha + nota;
         });
         return (soma / curso.notas.length);
     };
-    if (alunoExistente.length != 0) {
-        console.log(`Aluno: ${alunoExistente[0].nome}`);
-        for (curso of alunoExistente[0].boletim) {
+    if (alunoExistente) {
+        console.log(`Aluno: ${alunoExistente.nome}`);
+        for (curso of alunoExistente.boletim) {
             let soma = calcularMedia();
             console.log(`Curso: ${curso.nomeCurso} 
                 Nota: ${soma.toFixed(1)}
@@ -112,11 +114,11 @@ const checarAprovado = (nomeAluno) => {
 };
 
 const adicionarNota = (nomeAluno, nomeCurso, nota) => {
-    let alunoExistente = alunos.filter(aluno => (aluno.nome == nomeAluno));
-    if (alunoExistente.length != 0) {
-        let boletim = alunoExistente[0].boletim.filter(curso => (curso.nomeCurso == nomeCurso));
+    let alunoExistente = buscarAluno(nomeAluno);
+    if (alunoExistente) {
+        let boletim = alunoExistente.boletim.filter(curso => (curso.nomeCurso == nomeCurso));
         boletim[0].notas.push(nota);
-        console.log(`Aluno: ${alunoExistente[0].nome}
+        console.log(`Aluno: ${alunoExistente.nome}
         Curso: ${boletim[0].nomeCurso}
         Notas: ${boletim[0].notas}
         Nota(${nota}) adicionada com sucesso!`);
@@ -124,9 +126,36 @@ const adicionarNota = (nomeAluno, nomeCurso, nota) => {
         console.log("Aluno não encontrado!");
     };
 };
+
+const buscarAlunoPorNome = (nomeAluno) => {
+    let alunoExistente = buscarAluno(nomeAluno);
+    if (alunoExistente) {
+        console.log(`Aluno encontrado:
+    Nome: ${alunoExistente.nome}`);
+        for (boletim of alunoExistente.boletim) {
+            console.log(`
+            Curso: ${boletim.nomeCurso}
+            Notas: ${boletim.notas}
+            Faltas: ${boletim.faltas}
+            Data da Matricula: ${boletim.dataMatricula}`)
+        };
+    } else {
+        console.log("Aluno não encontrado!");
+    };
+};
+
+const buscarAluno = (nomeAluno) => {
+    let alunoExistente = alunos.filter(aluno => (aluno.nome == nomeAluno));
+    if (alunoExistente.length != 0) {
+        return alunoExistente[0];
+    } else {
+        return false;
+    };
+};
+
 // listarAlunos();
 // matricularAluno("Daniele de Oliveira Lucas", "Full Stack", "Vila Olimpia"); // Novo Aluno
-// matricularAluno("Anderson Nicácio", "Full Stack", "Vila Olimpia"); // Aluno Existente
+// matricularAluno("Anderson Nicácio", "UX/UI", "Vila Olimpia"); // Aluno Existente
 // checarAprovado("Amanda Andrade"); // Novo Aluno
 // checarAprovado("Anderson Nicácio"); // Aluno Existente
 // console.log("--------------------------------------");
@@ -134,4 +163,5 @@ const adicionarNota = (nomeAluno, nomeCurso, nota) => {
 // console.log("--------------------------------------");
 // checarAprovado("Anderson Nicácio"); 
 // adicionarNota("Michel Santana", "Full Stack", 9);
-// buscarAlunoPorNome();
+// buscarAlunoPorNome("Anderson Nicácio");
+// buscarAlunoPorNome("Erica Suguimoto");
