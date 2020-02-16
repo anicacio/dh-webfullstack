@@ -1,6 +1,10 @@
-let data = new Date();
-console.log(data);
-data.setYear(1984);
-data.setMonth(8);
-data.setDate(3);
-console.log(data);
+const express = require('express');
+const app = express();
+
+let serie = ["1", "2", "3", "4"]
+app.get('/serie/:id', (req, res) => {
+    let idSerie = req.params.id - 1;
+    res.send(serie[idSerie]);
+});
+
+app.listen(3000);
