@@ -1,13 +1,13 @@
 const PetModel = require("../models/Pet")
 const PetController = {
     index: (req, res) => {
-        res.send("Paginal Inicial");
+        res.send(PetModel.listarPets());
     },
     add: (req, res) => {
-        res.send("Adicionar pet");
+        res.send(PetModel.adicionarPet());
     },
     show: (req, res) => {
-        res.send("Exibe um pet especifico");
+        res.send(PetModel.buscarPet());
     }
 };
 
