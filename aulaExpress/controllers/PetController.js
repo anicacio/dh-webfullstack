@@ -1,3 +1,4 @@
+const PetModel = require("../models/Pet")
 const PetController = {
     index: (req, res) => {
         res.send("Paginal Inicial");
