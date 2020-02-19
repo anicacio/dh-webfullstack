@@ -3,10 +3,7 @@ let pets = [{ nome: "doug" }, { nome: "costelinha" }];
 const listarPets = () => {
   let conteudo = "";
   for (let pet of pets) {
-    conteudo += `
-    -----------
-    Nome: ${pet.nome}
-    -----------`;
+    conteudo += `Nome: ${pet.nome}<br>`;
   }
 
   return conteudo;
